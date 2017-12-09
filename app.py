@@ -13,11 +13,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 
-# to create all tables and the data.db file if doesn't exist
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 #User management end points
 api.add_resource(User, '/create_user')
 api.add_resource(GetUser, '/get_user/<string:uid>')
